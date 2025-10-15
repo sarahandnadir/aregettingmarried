@@ -2,26 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Save the Date[s] — Spatial</title>
+  <title>Save the Date[s]</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A spatial, zoomable wedding site: Save the Date[s], Katib Kitab, Henna Night, Waleemeh, Friends Night Out, Wedding Day, Conclusion." />
+  <meta name="description" content="An envelope that opens to reveal a zoomable wedding site." />
 
   <!-- Adobe Fonts (your kit) -->
   <link rel="stylesheet" href="https://use.typekit.net/ytn5cgl.css">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Minimal hint -->
-  <div id="hint">Scroll to zoom · Move mouse to explore · Click a board to focus</div>
 
-  <!-- Rendering roots -->
-  <div id="webgl-root"></div>
-  <div id="css3d-root"></div>
+  <!-- Hint (auto-fades) -->
+  <div id="hint">Tap / click to open · Scroll to zoom</div>
 
-  <!-- Three.js + helpers (CDN) -->
-  <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.159.0/examples/js/CSS3DRenderer.js"></script>
-  <script src="https://unpkg.com/three@0.159.0/examples/js/libs/tween.min.js"></script>
+  <!-- Stage keeps everything centered and handles zoom -->
+  <div id="stage">
+    <div id="zoom-layer">
+      <!-- Envelope group (3D) -->
+      <div class="envelope" id="envelope" aria-label="Envelope">
+        <!-- back + pocket -->
+        <div class="env-back"></div>
+        <div class="env-pocket"></div>
+
+        <!-- letter that slides up -->
+        <div class="letter">
+          <div class="letter-front">
+            <div class="cover-title">Save the Date[s]</div>
+          </div>
+
+          <!-- inside website area -->
+          <div class="letter-inside">
+            <div class="site">
+              <header class="site-head">
+                <h1>Save the Date[s]</h1>
+                <p class="sub">We’ll share final details soon — here are the weeks.</p>
+              </header>
+
+              <section class="site-block">
+                <h2>Dates</h2>
+                <ul class="timeline">
+                  <li><span>08–09/01/2026</span> Katib Kitab</li>
+                  <li><span>09–10/01/2026</span> Henna Night</li>
+                  <li><span>09–10/01/2026</span> Waleemeh</li>
+                  <li><span>TBA</span> Friends Night Out</li>
+                  <li><span>12–13/01/2026</span> Wedding Day</li>
+                </ul>
+              </section>
+
+              <section class="site-block">
+                <h2>Notes</h2>
+                <p class="caption"><strong style="color:#d30294">Cultural Note (Katib Kitab):</strong> Short placeholder text. </p>
+                <p class="caption"><strong style="color:#d61414">Cultural Note (Henna):</strong> Short placeholder text.</p>
+                <p class="caption"><strong style="color:#3a8b1d">Cultural Note (Waleemeh):</strong> Short placeholder text.</p>
+              </section>
+
+              <section class="site-block">
+                <h2>Conclusion</h2>
+                <p>Come to our wedding. More info soon.</p>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <!-- top flap that opens -->
+        <div class="env-flap" id="flap"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
